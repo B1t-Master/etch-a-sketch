@@ -25,8 +25,8 @@ function createGrid() {
     for (let j = 0; j < rows; j++) {
         for (let i = 0; i < columns; i++) {
             let cell = document.createElement("div");
-            cell.style.width = 256 / gridSize + "px";
-            cell.style.height = 256 / gridSize + "px";
+            cell.style.width = 512 / gridSize + "px";
+            cell.style.height = 512 / gridSize + "px";
             cell.style.border = "black solid 1px"
             cell.style.boxSizing = "border-box"
             cell.style.left = j * 100 + "px";
@@ -39,6 +39,7 @@ function createGrid() {
 
     }
 }
+
 function getColor() {
     let code = '0123456789ABCDEF'
     let hex = '#'

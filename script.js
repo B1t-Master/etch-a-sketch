@@ -4,7 +4,6 @@ reset = document.querySelector(".reset");
 let cell = document.createElement("div");
 let grid = document.querySelector("#grid");
 etch.addEventListener("click", () => {
-
     gridSize = prompt(`What dimensions do you want for canvas
 ie enter 64 for a 64x64`, "");
     gridSize = parseInt(gridSize);
@@ -13,13 +12,22 @@ ie enter 64 for a 64x64`, "");
         return window.location.reload();
     }
     createGrid();
-}, { once: true });
+});
+//{ once: true });
 
+function clear() {
+    pixels = document.querySelectorAll(".cell");
+    pixels.forEach((e) => e.remove());
+
+}
 reset.addEventListener("click", () => {
-    window.location.reload();
+    clear();
+    createGrid();
+    //window.location.reload();
 });
 
 function createGrid() {
+    clear();
     let rows = gridSize;
     let columns = gridSize;
     for (let j = 0; j < rows; j++) {
@@ -29,8 +37,9 @@ function createGrid() {
             cell.style.height = 512 / gridSize + "px";
             cell.style.border = "black solid 1px"
             cell.style.boxSizing = "border-box"
-            cell.style.left = j * 100 + "px";
-            cell.style.top = i * 100 + "px";
+            cell.classList.add("cell");
+            //cell.style.left = j * 100 + "px";
+            //cell.style.top = i * 100 + "px";
             cell.addEventListener("mouseover", () => {
                 cell.style.backgroundColor = getColor();
             });
@@ -48,5 +57,6 @@ function getColor() {
     }
     return hex;
 }
-
+gridSize = 16;
+createGrid();
 

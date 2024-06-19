@@ -32,13 +32,20 @@ function createGrid() {
             cell.style.left = j * 100 + "px";
             cell.style.top = i * 100 + "px";
             cell.addEventListener("mouseover", () => {
-                cell.style.backgroundColor = "black";
+                cell.style.backgroundColor = getColor();
             });
             grid.appendChild(cell);
         }
 
     }
 }
-
+function getColor() {
+    let code = '0123456789ABCDEF'
+    let hex = '#'
+    for (var i = 0; i < 6; i++) {
+        hex += code[Math.floor(Math.random() * 16)];
+    }
+    return hex;
+}
 
 
